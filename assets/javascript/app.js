@@ -1,11 +1,15 @@
 
 //ready when loading is complete
-// $(document).ready(function() {
-// 	;
-// }
+$(document).ready(function() {
+	$(".button").on("click", function() {
+		submit();
+	});
+});
 
 
 // defining variables
+var currentQuestion = 0;
+
 var correct = 0;
 
 var incorrect = 0;
@@ -59,12 +63,36 @@ var questions = [
 console.log(questions);
 
 // looping through questions and corresponding answers to determine what should be displayed 
-// for (var i = 0; i > question.length; i++) {
-// 	;
-// }
+function questionSelect() {
+	if (currentQuestion < questions.length) {
 
+		// clearing and adding the current question to the page
+		$("#question").empty();
+		$("#question").text(questions[currentQuestion].question);
 
+		// clearing and adding the current answer selections
+		$("#answer1").empty();
+		$("#answer1").text(questions[currentQuestion].answer1.string);
+		$("#answer2").empty();
+		$("#answer2").text(questions[currentQuestion].answer2.string);
+		$("#answer3").empty();
+		$("#answer3").text(questions[currentQuestion].answer3.string);
+		$("#answer4").empty();
+		$("#answer4").text(questions[currentQuestion].answer4.string);
 
+		// advancing to the next question and answers
+		currentQuestion++;
+	}
+	else {
+		function score() {
+			return;
+		}
+	}
+}
+
+submit = function() {
+	questionSelect();
+}
 
 
 

@@ -18,11 +18,11 @@
 
 <body>
 
-	<div class="container">
+	<div class="container text-center">
 		
 		<div class="row">
 			<div class="column col col-xs-12" id="title">
-				
+				<h1><strong>This Trivia Trial!</strong></h1>
 			</div>
 		</div>
 
@@ -33,20 +33,42 @@
 		</div>
 
 		<div class="row">
-			<div class="column col col-xs-12" id="question">
-				
+			<div class="column col col-xs-12">
+				<h3><strong><em>Current Question:</em></strong></h3>
+				<h4 id="question">Soon to be Replaced!</h4>
 			</div>
 		</div>
 
 		<div class="row">
-			<div class="column col col-xs-12" id="answers">
-				
+			<div class="column col col-xs-12 visible" id="answers">
+				<table class="table table-responsive col-xs-12 table-striped table-bordered table-hover text-left">
+
+			   		<thead>
+			      		<th class=" colspan-2 text-center info">Please Select Your Answer and Click the "Submit!" button.</th>
+					</thead>
+
+		      		<tr>
+			      		<td><input type="radio"value='1'><span class="text-center" id="answer1">1</span></td>
+					</tr>
+
+		      		<tr>
+			      		<td><input type="radio" value="2"><span class="text-center" id="answer2">2</span></td>
+		      		</tr>
+
+		      		<tr>
+			      		<td><input type="radio" value="3"><span class="text-center" id="answer3">3</span></td>
+					</tr>
+
+		      		<tr>
+			      		<td><input type="radio" value="4"><span class="text-center" id="answer4">4</span></td>
+			   		</tr>
+				</table>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="column col col-xs-12" id="submit">
-				
+				<button class="button btn-primary btn-lg" type="submit">Submit!</button>
 			</div>
 		</div>
 
