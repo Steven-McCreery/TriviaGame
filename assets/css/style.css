@@ -2,9 +2,14 @@ h3{
 	text-decoration: underline;
 }
 
+.small{
+	width: 5%;
+}
 
-
-
+.answers{
+	width: 95%;
+	line-height: 39px !important;
+}
 
 
 

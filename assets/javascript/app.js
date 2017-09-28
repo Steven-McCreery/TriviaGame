@@ -1,9 +1,19 @@
 
-//ready when loading is complete
+// ready when loading is complete
 $(document).ready(function() {
+	// submit button functionality
 	$(".button").on("click", function() {
 		submit();
 	});
+
+	// radio button functionality, table blank space selection fix
+	$(".table tbody tr").click(function(event) {
+	  if (event.target.type !== "radio") {
+	    $(":radio", this).trigger("click");
+	  }
+	});
+
+	$("#timer").text(time);
 });
 
 
@@ -15,6 +25,12 @@ var correct = 0;
 var incorrect = 0;
 
 var unanswered = 0;
+
+var time = 3;
+
+var interval;
+
+var running = false;
 
 // question and answer structure with correct and incorrect identifiers
 var questions = [
@@ -63,8 +79,11 @@ var questions = [
 console.log(questions);
 
 // looping through questions and corresponding answers to determine what should be displayed 
-function questionSelect() {
+questionSelect = function() {
 	if (currentQuestion < questions.length) {
+
+		// setting timer
+		countDown();
 
 		// clearing and adding the current question to the page
 		$("#question").empty();
@@ -80,22 +99,43 @@ function questionSelect() {
 		$("#answer4").empty();
 		$("#answer4").text(questions[currentQuestion].answer4.string);
 
+		// tracking responses
+		if (true) {}
+
 		// advancing to the next question and answers
 		currentQuestion++;
 	}
 	else {
-		function score() {
-			return;
-		}
+		score();
 	}
 }
 
 submit = function() {
+	running = false;
 	questionSelect();
 }
 
+checkAnswer = function() {
+	return;
+}
 
+countDown = function() {
+	if (running === false) {
+		time = 3;
+		interval = setInterval(function() {
+			time--;
+			$("#timer").text(time);
+		}, 1000);
+        running = true;
 
+	
+		if (time === 0) {
+			clearInterval(countDown);
+			score();
+		}
+	}
+}
 
-
-
+score = function() {
+	return;
+}

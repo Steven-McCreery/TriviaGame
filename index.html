@@ -22,13 +22,15 @@
 		
 		<div class="row">
 			<div class="column col col-xs-12" id="title">
-				<h1><strong>This Trivia Trial!</strong></h1>
+				<h1><strong>Questions!  Who doesn't like 'em?</strong></h1>
+				<br>
 			</div>
 		</div>
 
 		<div class="row">
-			<div class="column col col-xs-12" id="timer">
-				
+			<div class="column col col-xs-12">
+				<div id="clock">Timer: <span id="timer">30</span><span> Seconds Remaining</span></div>
+				<br>
 			</div>
 		</div>
 
@@ -36,6 +38,7 @@
 			<div class="column col col-xs-12">
 				<h3><strong><em>Current Question:</em></strong></h3>
 				<h4 id="question">Soon to be Replaced!</h4>
+				<br>
 			</div>
 		</div>
 
@@ -44,24 +47,71 @@
 				<table class="table table-responsive col-xs-12 table-striped table-bordered table-hover text-left">
 
 			   		<thead>
-			      		<th class=" colspan-2 text-center info">Please Select Your Answer and Click the "Submit!" button.</th>
+			   			<tr>
+				      		<th class=" colspan-2 text-center info" colspan="2">Please Select Your Answer and Click the "Submit!" button.</th>
+			      		</tr>
 					</thead>
+					
+					<tbody>
+					<form>
+			      		<tr>
+				      		<td class="small">
+				      			<div class="radio">
+			      					<label><input type="radio" value="1" id="first" name="optradio"></label>
+			      				</div>
+			      			</td>
 
-		      		<tr>
-			      		<td><input type="radio"value='1'><span class="text-center" id="answer1">1</span></td>
-					</tr>
+			      			<td class="text-center answers">
+				      			<div class="radiotext">
+			      					<label for="first" id="answer1">1</label>
+			      				</div>
+			      			</td>
+						</tr>
 
-		      		<tr>
-			      		<td><input type="radio" value="2"><span class="text-center" id="answer2">2</span></td>
-		      		</tr>
+			      		<tr>
+				      		<td>
+				      			<div class="radio">
+				      				<label><input type="radio" value="2" id="second" name="optradio"></label>
+				      			</div>
+				      		</td>
 
-		      		<tr>
-			      		<td><input type="radio" value="3"><span class="text-center" id="answer3">3</span></td>
-					</tr>
+				      		<td class="text-center answers">
+				      			<div class="radiotext">
+			      					<label for="second" id="answer2">2</label>
+			      				</div>
+			      			</td>
+			      		</tr>
 
-		      		<tr>
-			      		<td><input type="radio" value="4"><span class="text-center" id="answer4">4</span></td>
-			   		</tr>
+			      		<tr>
+				      		<td>
+				      			<div class="radio">
+				      				<label><input type="radio" value="3" id="third" name="optradio"></label>
+				      			</div>
+				      		</td>
+
+				      		<td class="text-center answers">
+				      			<div class="radiotext">
+			      					<label for="third" id="answer3">3</label>
+			      				</div>
+			      			</td>
+						</tr>
+
+			      		<tr>
+				      		<td>
+				      			<div class="radio">
+				      				<label><input type="radio" value="4" id="fourth" name="optradio"></label>
+				      			</div>
+				      		</td>
+
+				      		<td class="text-center answers">
+				      			<div class="radiotext">
+			      					<label for="fourth" id="answer4">4</label>
+			      				</div>
+			      			</td>
+				   		</tr>
+			   		</form>
+			   		</tbody>
+
 				</table>
 			</div>
 		</div>
