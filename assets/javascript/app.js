@@ -7,7 +7,7 @@ $(document).ready(function() {
 	});
 
 	// radio button functionality, table blank space selection fix
-	$(".table tbody tr").click(function(event) {
+	$(".table tbody tr").on("click", function(event) {
 	  if (event.target.type !== "radio") {
 	    $(":radio", this).trigger("click");
 	  }
@@ -94,7 +94,7 @@ questionSelect = function() {
 		$("#answer1").text(questions[currentQuestion].answer1.string);
 		$("#answer2").empty();
 		$("#answer2").text(questions[currentQuestion].answer2.string);
-		$("#answer3").empty();
+		$("#answer3").empty();	
 		$("#answer3").text(questions[currentQuestion].answer3.string);
 		$("#answer4").empty();
 		$("#answer4").text(questions[currentQuestion].answer4.string);
@@ -111,7 +111,7 @@ questionSelect = function() {
 }
 
 submit = function() {
-	running = false;
+	
 	questionSelect();
 }
 
@@ -120,22 +120,34 @@ checkAnswer = function() {
 }
 
 countDown = function() {
+	
+	// checking if the clock is not running
+	time = 3;
+	$("#timer").text(time);
+	console.log(time);
 	if (running === false) {
-		time = 3;
 		interval = setInterval(function() {
 			time--;
+			console.log(time);
 			$("#timer").text(time);
-		}, 1000);
+			if (time === 0) {
+				running = false;
+				clearInterval(interval);
+				score();
+			}
+		}, 1000 * 1);
         running = true;
 
-	
-		if (time === 0) {
-			clearInterval(countDown);
-			score();
-		}
+	}
+
+	else {
+		// clearInterval(interval);
+		return;
 	}
 }
 
 score = function() {
-	return;
+	// questionSelect();
+	// return;
+
 }
