@@ -2,8 +2,14 @@
 // ready when loading is complete
 $(document).ready(function() {
 	// submit button functionality
-	$(".button").on("click", function() {
+	$("#submit").on("click", function() {
 		submit();
+	});
+	$("#begin").on("click", function() {
+		begin();
+	});
+	$("#startOver").on("click", function() {
+		startOver();
 	});
 
 	// radio button functionality, table blank space selection fix
@@ -25,6 +31,8 @@ var correct = 0;
 var incorrect = 0;
 
 var unanswered = 0;
+
+var answered = 0;
 
 var time = 3;
 
@@ -81,6 +89,7 @@ console.log(questions);
 // looping through questions and corresponding answers to determine what should be displayed 
 questionSelect = function() {
 	if (currentQuestion < questions.length) {
+		console.log("questionSelect");
 
 		// setting timer
 		countDown();
@@ -110,13 +119,56 @@ questionSelect = function() {
 	}
 }
 
+begin = function() {
+	$("#begin").addClass("hidden");
+	$("#submit").removeClass("hidden");
+}
+
 submit = function() {
-	
-	questionSelect();
+		if (time !== 0) {
+			score();
+		}
+	// if (answered < questions.length) {
+	}else {
+		transition();
+	}
+}
+
+transition = function() {
+
+	// displaying transitionary area while hiding the question/answers portions
+	$("#submit").addClass("hidden");
+	$("#answers").addClass("hidden");
+
+	// checking user's answer against data
+	$("#correctResponse").removeClass("hidden");
+	$("#incorrectResponse").removeClass("hidden");
+	$("#unanswered").removeClass("hidden");
+
+	// ajax query for gif
+
+
+	// advancing to next question after answer check and gif timeout
+	setTimeout(function(){
+		questionSelect();
+	}, 1000 * 5)
+
 }
 
 checkAnswer = function() {
+	$("#startOver").removeClass("hidden");
+	$("#results").removeClass("hidden");
 	return;
+}
+
+startOver = function() {
+	currentQuestion = 0;
+	correct = 0;
+	incorrect = 0;
+	unanswered = 0;
+	answered = 0;
+	questionSelect();
+	console.log("startOver");
 }
 
 countDown = function() {
@@ -147,6 +199,11 @@ countDown = function() {
 }
 
 score = function() {
+	answered++;
+	console.log("score!"); 
+	if (questionsAnswered = questions.length) {
+		checkAnswer();
+	}
 	// questionSelect();
 	// return;
 
