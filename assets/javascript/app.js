@@ -101,6 +101,7 @@ questionSelect = function() {
 		$("#correctResponse").addClass("hidden");
 		$("#incorrectResponse").addClass("hidden");
 		$("#unansweredResponse").addClass("hidden");
+		$("img").remove();
 
 		// setting timer
 		countDown();
@@ -182,13 +183,28 @@ transition = function() {
 		$(".actualAnswer").text(returnAnswer);
 	}
 	
-	// user did not guess an answer
-// var temp = $("input").hasClass("true").val();
-// console.log(temp);
-// $(".actualAnswer").text(temp);
+	
 	
 
 	// ajax query for gif
+	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+        returnAnswer + "&api_key=dc6zaTOxFJmzC&limit=1";
+
+	$.ajax({
+        url: queryURL,
+        method: "GET"
+      }).done(function(response) {
+      	console.log(response);
+
+      	var currentImage = $("<img>");
+      	var imageUrl = response.data["0"].images.fixed_height.url;
+
+      	currentImage.attr("src", imageUrl);
+        currentImage.attr("alt", "a gif image of " + returnAnswer);
+
+      	$("#transition").append(currentImage);
+      })
+
 
 
 
@@ -211,6 +227,7 @@ transition = function() {
 		$("#startOver").removeClass("hidden");
 		$("#startOver").removeClass("pull-right");
 		$("#results").removeClass("hidden");
+		$("img").remove();
 		$("#submit").addClass("hidden");
 		$("#answers").addClass("hidden");
 		$("#clock").addClass("hidden");
