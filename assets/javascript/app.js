@@ -34,7 +34,7 @@ var unanswered = 0;
 
 var answered = 0;
 
-var time = 3;
+var time = 20;
 
 var interval;
 
@@ -306,7 +306,7 @@ transition = function() {
 		$("#unanswered").text(unanswered);
 
 	}
-	}, 1000 * 3)
+	}, 1000 * 5)
 }
 
 // reset the entire game and begin
@@ -324,7 +324,7 @@ startOver = function() {
 countDown = function() {
 	
 	// reset time and begin interval, if no submit, then auto transition at time of zero
-	time = 3;
+	time = 20;
 	$("#timer").text(time);
 	console.log(time);
 	if (running === false) {
