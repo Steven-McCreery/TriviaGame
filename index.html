@@ -112,31 +112,34 @@
 			   		</form>
 			   		</tbody>
 				</table>
+			</div>
 		
-		<div class="row">
-			<div class="column col col-xs-12 hidden" id="transition">
+			<div class="row">
+				<div class="column col col-xs-12" id="transition">
 
-				<div id="correctResponse">You Chose Wisely! <span> </span><span> </span></div>
+					<div id="correctResponse" class="hidden"><span></span>You Chose Wisely!<span></span></div>
 
-				<div id="incorrectResponse">You Have Chosen Poorly! <br>The correct answer is: <span class="actualAnswer"> </span></div>
+					<div id="incorrectResponse" class="hidden">You Have Chosen Poorly! <br>The correct answer is: <span class="actualAnswer"> </span></div>
 
-				<div id="unanswered">You Have Chosen Poorly! <br>The correct answer is: <span class="actualAnswer"> </span></div>
+					<div id="unansweredResponse" class="hidden">You Have Forgotten to Choose! <br>The correct answer is: <span class="actualAnswer"> </span></div>
 
+				</div>
 			</div>
-		</div>
 
-			</div>
 		</div>
 
 		<div class="row">
 			<div class="column col col-xs-12 hidden" id="results">
-				<div>No More Timers (for now): As Many Seconds as you Need Remaining!</span></div>
+				<div>No More Timers (for now): as Many Seconds as Needed Remaining!</div>
 
-				<div id="clock">Correct Answers: <span id="timer">30</span><span> Seconds Remaining</span></div>
+				<div>Correct Answers: <span id="correct">30</span></div>
 
-				<div id="clock">Incorrect Answers: <span id="timer">30</span><span> Seconds Remaining</span></div>
+				<div>Incorrect Answers: <span id="incorrect">30</span></div>
 
-				<div id="clock">Unanswered: <span id="timer">30</span><span> Seconds Remaining</span></div>
+				<div>Unanswered Items: <span id="unanswered">30</span></div>
+				<br>
+				<br>
+				<br>
 			</div>
 		</div>
 
