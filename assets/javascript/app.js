@@ -91,6 +91,7 @@ questionSelect = function() {
 	if (currentQuestion < questions.length) {
 		console.log("questionSelect");
 
+		// hide 
 		$("#correctResponse").addClass("hidden");
 		$("#incorrectResponse").addClass("hidden");
 		$("#unansweredResponse").addClass("hidden");
@@ -112,10 +113,17 @@ questionSelect = function() {
 		$("#answer4").empty();
 		$("#answer4").text(questions[currentQuestion].answer4.string);
 
-		// tracking responses
-		if (true) {}
+		// clearing and adding the value of each answer to radio button's class
+		$("#first").removeClass();
+		$("#first").addClass(questions[currentQuestion].answer1.value);
+		$("#second").removeClass();
+		$("#second").addClass(questions[currentQuestion].answer2.value);
+		$("#third").removeClass();	
+		$("#third").addClass(questions[currentQuestion].answer3.value);
+		$("#fourth").removeClass();
+		$("#fourth").addClass(questions[currentQuestion].answer4.value);
 
-		// advancing to the next question and answers
+		// increment currentQuestion
 		currentQuestion++;
 	}
 }
@@ -151,8 +159,7 @@ transition = function() {
 		unanswered++;
 		console.log("unanswered" + unanswered);
 		$("#unansweredResponse").removeClass("hidden");	
-	}
-	if (true) {
+	}else if ($("input:checked").hasClass("true")) {
 		$("#correctResponse").removeClass("hidden");
 		correct++;
 		console.log("correct" + correct);
@@ -161,7 +168,7 @@ transition = function() {
 		incorrect++;
 		console.log("incorrect" + incorrect);
 	}
-	}
+	
 	// user did not guess an answer
 
 	
@@ -204,6 +211,7 @@ transition = function() {
 	}, 1000 * 3)
 }
 
+// reset the entire game and begin
 startOver = function() {
 	currentQuestion = 0;
 	correct = 0;
@@ -217,7 +225,7 @@ startOver = function() {
 
 countDown = function() {
 	
-	// checking if the clock is not running
+	// reset time and begin interval, if no submit, then auto transition at time of zero
 	time = 3;
 	$("#timer").text(time);
 	console.log(time);
@@ -232,10 +240,7 @@ countDown = function() {
 			}
 		}, 1000 * 1);
         running = true;
-
-	}
-
-	else {
+	}else {
 		return;
 	}
 }
