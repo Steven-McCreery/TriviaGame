@@ -40,9 +40,12 @@ var interval;
 
 var running = false;
 
+var returnAnswer;
+
 // question and answer structure with correct and incorrect identifiers
 var questions = [
 	{question: "Who?",
+	answer: "One",
 	answer1: {value : "true",
 		string: "One"},
 	answer2: {value : "false",
@@ -53,6 +56,7 @@ var questions = [
 		string: "Four"},
 	},
 	{question: "What?",
+	answer: "B",
 	answer1: {value : "false",
 		string: "A"},
 	answer2: {value : "true",
@@ -63,6 +67,7 @@ var questions = [
 		string: "D"},
 	},
 	{question: "When?",
+	answer: "Blue",
 	answer1: {value : "false",
 		string: "Red"},
 	answer2: {value : "false",
@@ -73,6 +78,7 @@ var questions = [
 		string: "Yellow"},
 	},
 	{question: "Where?",
+	answer: "Reverse",
 	answer1: {value : "false",
 		string: "Stop"},
 	answer2: {value : "false",
@@ -112,6 +118,9 @@ questionSelect = function() {
 		$("#answer3").text(questions[currentQuestion].answer3.string);
 		$("#answer4").empty();
 		$("#answer4").text(questions[currentQuestion].answer4.string);
+
+		// setting answer to var
+		returnAnswer = questions[currentQuestion].answer
 
 		// clearing and adding the value of each answer to radio button's class
 		$("#first").removeClass();
@@ -158,7 +167,9 @@ transition = function() {
 	if (!$("#first").is(":checked") && !$("#second").is(":checked") && !$("#third").is(":checked") && !$("#fourth").is(":checked")) {
 		unanswered++;
 		console.log("unanswered" + unanswered);
-		$("#unansweredResponse").removeClass("hidden");	
+		$("#unansweredResponse").removeClass("hidden");
+		console.log(returnAnswer);
+		$(".actualAnswer").text(returnAnswer);
 	}else if ($("input:checked").hasClass("true")) {
 		$("#correctResponse").removeClass("hidden");
 		correct++;
@@ -167,10 +178,14 @@ transition = function() {
 		$("#incorrectResponse").removeClass("hidden");
 		incorrect++;
 		console.log("incorrect" + incorrect);
+		console.log(returnAnswer);
+		$(".actualAnswer").text(returnAnswer);
 	}
 	
 	// user did not guess an answer
-
+// var temp = $("input").hasClass("true").val();
+// console.log(temp);
+// $(".actualAnswer").text(temp);
 	
 
 	// ajax query for gif
