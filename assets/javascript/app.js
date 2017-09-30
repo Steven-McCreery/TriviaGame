@@ -3,7 +3,7 @@
 $(document).ready(function() {
 	// submit button functionality
 	$("#submit").on("click", function() {
-		submit();
+		transition();
 	});
 	$("#begin").on("click", function() {
 		begin();
@@ -114,28 +114,29 @@ questionSelect = function() {
 		// advancing to the next question and answers
 		currentQuestion++;
 	}
-	else {
-		score();
-	}
 }
 
 begin = function() {
-	$("#begin").addClass("hidden");
 	$("#submit").removeClass("hidden");
-}
-
-submit = function() {
-		if (time !== 0) {
-			score();
-		}
-	// if (answered < questions.length) {
-	}else {
-		transition();
-	}
+	$("#clock").removeClass("hidden");
+	$(".question").removeClass("hidden");
+	$("#answers").removeClass("hidden");
+	$("#begin").addClass("hidden");
+	$("#begin").addClass("pull-right");
+	$("#startOver").addClass("pull-right");
+	$("#startOver").addClass("hidden");
+	questionSelect();
+	
 }
 
 transition = function() {
 
+	// increment answered
+	clearInterval(interval);
+	running = false;
+	answered++;
+	console.log("answered!"); 
+	
 	// displaying transitionary area while hiding the question/answers portions
 	$("#submit").addClass("hidden");
 	$("#answers").addClass("hidden");
@@ -143,22 +144,33 @@ transition = function() {
 	// checking user's answer against data
 	$("#correctResponse").removeClass("hidden");
 	$("#incorrectResponse").removeClass("hidden");
+
+	// user did not guess an answer
+
 	$("#unanswered").removeClass("hidden");
 
 	// ajax query for gif
 
 
-	// advancing to next question after answer check and gif timeout
-	setTimeout(function(){
+	// final scoring or advancing to next question after answer check and gif timeout
+	if (answered === questions.length) {
+		$("#startOver").removeClass("hidden");
+		$("#startOver").removeClass("pull-right");
+		$("#results").removeClass("hidden");
+		$("#clock").addClass("hidden");
+		$(".question").addClass("hidden");
+	}else { 
+		setTimeout(function(){
 		questionSelect();
-	}, 1000 * 5)
-
-}
-
-checkAnswer = function() {
-	$("#startOver").removeClass("hidden");
-	$("#results").removeClass("hidden");
-	return;
+		$("#submit").removeClass("hidden");
+		$("#clock").removeClass("hidden");
+		$(".question").removeClass("hidden");
+		$("#answers").removeClass("hidden");
+		$("#begin").addClass("hidden");
+		$("#begin").addClass("pull-right");
+		$("#startOver").addClass("pull-right");
+		}, 1000 * 5)
+	}
 }
 
 startOver = function() {
@@ -167,7 +179,7 @@ startOver = function() {
 	incorrect = 0;
 	unanswered = 0;
 	answered = 0;
-	questionSelect();
+	begin();
 	console.log("startOver");
 }
 
@@ -184,8 +196,7 @@ countDown = function() {
 			$("#timer").text(time);
 			if (time === 0) {
 				running = false;
-				clearInterval(interval);
-				score();
+				transition();
 			}
 		}, 1000 * 1);
         running = true;
@@ -193,18 +204,7 @@ countDown = function() {
 	}
 
 	else {
-		// clearInterval(interval);
 		return;
 	}
 }
 
-score = function() {
-	answered++;
-	console.log("score!"); 
-	if (questionsAnswered = questions.length) {
-		checkAnswer();
-	}
-	// questionSelect();
-	// return;
-
-}

@@ -29,13 +29,13 @@
 
 		<div class="row">
 			<div class="column col col-xs-12">
-				<div id="clock">Timer: <span id="timer">30</span><span> Seconds Remaining</span></div>
+				<div id="clock" class="hidden">Timer: <span id="timer">30</span><span> Seconds Remaining</span></div>
 				<br>
 			</div>
 		</div>
 
 		<div class="row">
-			<div class="column col col-xs-12">
+			<div class="column col col-xs-12 question hidden">
 				<h3><strong><em>Current Question:</em></strong></h3>
 				<h4 id="question">Soon to be Replaced!</h4>
 				<br>
@@ -48,7 +48,7 @@
 
 			   		<thead>
 			   			<tr>
-				      		<th class=" colspan-2 text-center info" colspan="2">Please Select Your Answer and Click the "Submit!" button.</th>
+				      		<th class=" colspan-2 text-center info" colspan="2">Please Select Your Answer and Click the "Submit!" Button.</th>
 			      		</tr>
 					</thead>
 					
@@ -112,14 +112,25 @@
 			   		</form>
 			   		</tbody>
 				</table>
+		
+		<div class="row">
+			<div class="column col col-xs-12 hidden" id="transition">
 
+				<div id="correctResponse">You Chose Wisely! <span> </span><span> </span></div>
+
+				<div id="incorrectResponse">You Have Chosen Poorly! <br>The correct answer is: <span class="actualAnswer"> </span></div>
+
+				<div id="unanswered">You Have Chosen Poorly! <br>The correct answer is: <span class="actualAnswer"> </span></div>
+
+			</div>
+		</div>
 
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="column col col-xs-12 hidden" id="results">
-				<div id="clock">Timer: <span id="timer">30</span><span> Seconds Remaining</span></div>
+				<div>No More Timers (for now): As Many Seconds as you Need Remaining!</span></div>
 
 				<div id="clock">Correct Answers: <span id="timer">30</span><span> Seconds Remaining</span></div>
 
@@ -130,20 +141,20 @@
 		</div>
 
 		<div class="row">
-			<div class="column col col-xs-12" id="begin">
-				<button class="button btn-primary btn-lg">Begin!</button>
+			<div class="column col col-xs-12">
+				<button class="button btn-primary btn-lg" id="begin">Begin!</button>
 			</div>
 		</div>
 
 		<div class="row">
-			<div class="column col col-xs-12" id="submit">
-				<button class="button btn-primary btn-lg">Submit!</button>
+			<div class="column col col-xs-12">
+				<button class="button btn-primary btn-lg hidden" id="submit">Submit!</button>
 			</div>
 		</div>
 
 		<div class="row">
-			<div class="column col col-xs-12" id="startOver">
-				<button class="button btn-primary btn-lg">Start Over!</button>
+			<div class="column col col-xs-12">
+				<button class="button btn-primary btn-lg hidden" id="startOver">Start Over!</button>
 			</div>
 		</div>
 
