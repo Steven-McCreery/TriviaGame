@@ -1,3 +1,19 @@
+
+h1{
+	padding: 3%;
+	border: 5px double black;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	background-color: darkgreen;
+	color: black;
+}
+
+h2{
+	padding: 3%;
+	border: 5px ridge;
+	background-color: rgb(129,166,194);
+	color: black;
+}
+
 h3{
 	text-decoration: underline;
 }
@@ -11,7 +27,21 @@ h3{
 	line-height: 39px !important;
 }
 
+body{
+	background-color: darkblue;
+}
 
+.container{
+	background-color: lightgray;
+	margin-top: 5%;
+}
 
+table{
+	background-color: white;
+}
 
+img{
+	border: 10px groove darkgray;
+	border-radius: 10px;
+}
 
